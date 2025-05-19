@@ -5,7 +5,6 @@ import { timeAgo } from "../../utils/timeAgo";
 import StatsPill from "../StatsPill/StatsPill";
 import IconSvg from "../IconsSvg/IconSvg";
 
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 const INITIAL_REPOS_TO_SHOW = 4;
 
 export default function UserProfile({ username }) {
@@ -21,13 +20,7 @@ export default function UserProfile({ username }) {
       setError(null);
       try {
         const response = await fetch(
-          `https://api.github.com/users/${username.login}/repos`,
-          {
-            headers: {
-              Authorization: `Bearer ${GITHUB_TOKEN}`,
-              Accept: "application/vnd.github.v3+json",
-            },
-          }
+          `https://api.github.com/users/${username.login}/repos`
         );
 
         if (!response.ok) {

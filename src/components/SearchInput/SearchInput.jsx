@@ -3,8 +3,6 @@ import IconSvg from "../IconsSvg/IconSvg";
 import UserProfile from "../UserProfile/UserProfile";
 import "./SearchInput.css";
 
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
-
 export default function SearchInput() {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -40,25 +38,13 @@ export default function SearchInput() {
     }
     try {
       const response = await fetch(
-        `https://api.github.com/search/users?q=${searchTerm}`,
-        {
-          headers: {
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-            Accept: "application/vnd.github.v3+json",
-          },
-        }
+        `https://api.github.com/search/users?q=${searchTerm}`
       );
       const data = await response.json();
       const usersWithBio = await Promise.all(
         data.items.map(async (user) => {
           const userDetails = await fetch(
-            `https://api.github.com/users/${user.login}`,
-            {
-              headers: {
-                Authorization: `Bearer ${GITHUB_TOKEN}`,
-                Accept: "application/vnd.github.v3+json",
-              },
-            }
+            `https://api.github.com/users/${user.login}`
           );
           const userData = await userDetails.json();
           return {
