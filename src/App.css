@@ -1,0 +1,13 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../public/hero-image.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.app-wrapper {
+  display: block;
+  margin: 0 auto;
+  max-width: 1280px;
+}
