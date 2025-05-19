@@ -6,7 +6,7 @@ export default function IconSvg({ iconName, customClass = " " }) {
   return (
     <ReactSVG
       data-component="icon-svg"
-      src={`/icons/${iconName}.svg`}
+      src={`./icons/${iconName}.svg`}
       wrapper="span"
       className={`svg-icon ${customClass}`}
     />
