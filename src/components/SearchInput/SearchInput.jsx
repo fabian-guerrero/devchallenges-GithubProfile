@@ -33,7 +33,7 @@ export default function SearchInput() {
   }, []);
 
   const fetchUsers = async (searchTerm) => {
-    console.log("🔑 Runtime Token:", import.meta.env.VITE_GITHUB_TOKEN);
+    console.log("🔑 Runtime Token:", { GITHUB_TOKEN });
     if (searchTerm.length < 3) {
       setSuggestions([]);
       setSearchCompleted(false);
